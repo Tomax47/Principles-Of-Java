@@ -32,7 +32,7 @@ public class ExceptionsHandling {
 
         /**
                                            {THROWN EXCEPTION}
-         
+
          A thrown exception happens when an exception occurs and it aint caught right away at the line of code
          that caused it, but instead being thrown till a catch statement catches it..
 
@@ -61,10 +61,32 @@ public class ExceptionsHandling {
         /**
          Finally block : it contains the block of the code that u want to be executed whether an exception occurred or no
          Fe. ^above^
+
+         The finally-statement always override any return statement in the try or catch blocks
+         Lets take the printNumber() method as an example ->
+
+            The method will cause no exceptions, so the catch block won't be called, thus the logical output to be
+            as a result of executing the method is 3, no?
+            -> Actually nah, the output will be 6, as the finally-block overrides the try block and returns its return value!!
+
+         We often won't need to add a return statement in the finally-block, and it's better to avoid it if it ain't necessary, also,
+         this is a good interview question, so be aware of it ;)
          */
+
+        System.out.println("printNumber() method output : "+printNumber());
     }
 
     private static int getNumber(int[] array){
         return array[5];
+    }
+
+    private static int printNumber(){
+        try {
+            return 2;
+        } catch (Exception e) {
+            return 4;
+        } finally {
+            return 6;
+        }
     }
 }
